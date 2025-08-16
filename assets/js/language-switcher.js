@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const switchers = document.querySelectorAll(".language-switcher button");
 
     function loadLanguage(lang) {
-        fetch(`languages/${lang}.json`)
+        fetch(`/languages/${lang}.json`)
             .then(res => res.json())
             .then(data => {
                 document.querySelectorAll("[data-i18n]").forEach(el => {
