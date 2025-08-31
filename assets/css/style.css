@@ -169,9 +169,12 @@ body::after {
   display: none;
   font-size: 1.5rem;
   cursor: pointer;
-  color: var(--poppo-dark-purple);
-  padding-right: 25px;
-  background-color: rgba(182, 182, 182, 0.527);
+  color: white;
+  margin-right: 25px;
+  background: linear-gradient(135deg, #ff55a2 0%, #791ab8 100%);
+  padding: 5px 10px;
+  border-radius: 8px;
+  box-shadow: 3px 6px 10px rgba(252, 252, 252, 0.404);
 }
 
 /* Mobile Menu Enhancements */
@@ -195,9 +198,13 @@ body::after {
 
 /* Language Switcher */
 .language-switcher {
+  position: fixed;
+  top: 5rem;
+  right: 5.5rem;
   display: flex;
   gap: 0.3rem;
   align-items: center;
+  z-index: 10000;
 }
 
 .language-switcher button {
@@ -214,8 +221,8 @@ body::after {
 }
 
 .language-switcher img {
-  width: 25px;
-  height: 16px;
+  width: 55px;
+  height: 46px;
   border-radius: 2px;
   object-fit: cover;
 }
@@ -338,6 +345,7 @@ body::after {
 ============================================================ */
 .fancy-buttons {
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   gap: 1rem;
   margin-top: 2rem;
@@ -1143,8 +1151,8 @@ details p {
   .main-content { padding: 1rem; }
   .hero-section { padding: 0; }
   .section { margin: 2rem 0; }
-  .fancy-buttons { flex-direction: column; }
-  .fancy-btn { width: fit-content; padding: 0; margin: 0; }
+  .fancy-buttons { flex-direction: row; }
+  .fancy-btn { width: fit-content; padding: 0 10px; margin: 0; }
   .contact-header { flex-direction: column; text-align: center; }
   .contact-title { margin-left: 0; margin-top: 1rem; }
   .logo-icon { width: 32px; height: 32px; }
@@ -1154,7 +1162,7 @@ details p {
   .nav-links a { color: white; font-size: 1.1rem; padding: 0.5rem 0; }
   .nav-links.active { left: 0; margin-top: 0; padding-top: 0; }
   .language-switcher { gap: 0.2rem; }
-  .language-switcher img { width: 20px; height: 14px; }
+  .language-switcher img { width: 35px; height: 25px; opacity: 0.8; }
 }
 
 @media (max-width: 576px) {
@@ -1375,3 +1383,134 @@ details p {
   font-size: 0.9em;
   color: #666;
 }
+.social-icons {
+    display: flex;
+    gap: 1.2rem;
+    margin: 1.5rem 0;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Individual Social Icon Links */
+.social-icons a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(247, 37, 133, 0.1) 0%, rgba(114, 9, 183, 0.1) 100%);
+    backdrop-filter: blur(5px);
+    border: 1.5px solid rgba(3, 247, 194, 0.979);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover Effects */
+.social-icons a:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, rgba(247, 37, 133, 0.2) 0%, rgba(114, 9, 183, 0.2) 100%);
+}
+
+/* Glow Effect on Hover */
+.social-icons a:hover::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, var(--spell-purple), var(--fairy-pink), var(--wizard-blue));
+    background-size: 200% 200%;
+    z-index: -1;
+    filter: blur(8px);
+    opacity: 0.7;
+    animation: gradient-shift 3s infinite alternate;
+    border-radius: 50%;
+}
+
+/* Social Icon Images */
+.social-icons a img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    transition: all 0.3s ease;
+    filter: brightness(0.9);
+}
+
+.social-icons a:hover img {
+    transform: scale(1.15);
+    filter: brightness(1.2);
+}
+
+/* Specific Platform Colors on Hover */
+.social-icons a[href*="facebook"]:hover {
+    background: linear-gradient(135deg, rgba(59, 89, 152, 0.2) 0%, rgba(59, 89, 152, 0.3) 100%);
+}
+
+.social-icons a[href*="youtube"]:hover {
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.2) 0%, rgba(255, 0, 0, 0.3) 100%);
+}
+
+.social-icons a[href*="tiktok"]:hover {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.3) 100%);
+}
+
+/* Animation for Continuous Subtle Movement */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.social-icons a {
+    animation: float 4s ease-in-out infinite;
+}
+
+.social-icons a:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.social-icons a:nth-child(3) {
+    animation-delay: 1s;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .social-icons {
+        gap: 1rem;
+    }
+    
+    .social-icons a {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .social-icons a img {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+@media (max-width: 576px) {
+    .social-icons {
+        gap: 0.8rem;
+    }
+    
+    .social-icons a {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .social-icons a img {
+        width: 22px;
+        height: 22px;
+    }
+}
+

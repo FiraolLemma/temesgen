@@ -396,17 +396,24 @@ function setupSmoothScrolling() {
 
 // --- 19. Page Section Show/Hide (SPA-like) ---
 
+// --- 19. Page Section Show/Hide (SPA-like) ---
 function setupPageSections() {
   function showSection(id) {
+    // All page sections that need to be managed
     ['home-page', 'about-poppo-page', 'contact-page'].forEach(pid => {
-      document.getElementById(pid).style.display = (pid === id) ? 'block' : 'none';
+      const element = document.getElementById(pid);
+      if (element) {
+        element.style.display = (pid === id) ? 'block' : 'none';
+      }
     });
     closeMobileMenu();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+  
   window.showHome = () => showSection('home-page');
   window.showAboutPoppo = () => showSection('about-poppo-page');
   window.showContact = () => showSection('contact-page');
+  
   function closeMobileMenu() {
     const navLinks = document.getElementById('nav-links');
     const toggleIcon = document.querySelector('.mobile-menu-toggle i');
@@ -414,6 +421,7 @@ function setupPageSections() {
     toggleIcon?.classList.remove('fa-times');
     toggleIcon?.classList.add('fa-bars');
   }
+  
   document.querySelectorAll('#nav-links a').forEach(link => {
     link.addEventListener('click', closeMobileMenu);
   });
@@ -455,6 +463,7 @@ function initMagicalEffects() {
   setupSmoothScrolling();
   setupPageSections();
   applyColorAnimations();
+  handleHeaderGradient();
   // Initialize AOS if available
   if (typeof AOS !== 'undefined') {
     AOS.init({ duration: 800, once: true, easing: 'ease-in-out' });
